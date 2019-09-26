@@ -67,6 +67,7 @@
 #define dbg(x) DebugLog((x),D_SDL) << __FILE__ << ":" << __LINE__ << ": "
 
 static const std::string ITEM_HIGHLIGHT( "highlight_item" );
+static const std::string ZOMBIE_REVIVAL_INDICATOR( "zombie_revival_indicator" );
 
 static const std::array<std::string, 8> multitile_keys = {{
         "center",
@@ -2489,6 +2490,19 @@ bool cata_tiles::draw_field_or_item( const tripoint &p, const lit_level ll, int 
     return ret_draw_field && ret_draw_items;
 }
 
+bool cata_tiles::draw_zombie_revival_indicator( const tripoint &pos, const lit_level ll )
+{
+    if( ll != LL_BLANK && tileset_ptr->find_tile_type( ZOMBIE_REVIVAL_INDICATOR ) ) {
+        for( auto &i : g->m.i_at( pos ) ) {
+            if( i.can_revive() ) {
+                return draw_from_id_string( ZOMBIE_REVIVAL_INDICATOR, C_NONE, empty_string, pos, 0, 0, LL_LIT,
+                                            false );
+            }
+        }
+    }
+    return false;
+}
+
 bool cata_tiles::draw_vpart_below( const tripoint &p, const lit_level /*ll*/, int &/*height_3d*/,
                                    const bool ( &invisible )[5] )
 {
@@ -2733,6 +2747,8 @@ bool cata_tiles::draw_critter_at( const tripoint &p, lit_level ll, int &height_3
 bool cata_tiles::draw_zone_mark( const tripoint &p, lit_level ll, int &height_3d,
                                  const bool ( &invisible )[5] )
 {
+    draw_zombie_revival_indicator( p, ll );
+
     if( invisible[0] ) {
         return false;
     }

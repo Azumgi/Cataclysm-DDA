@@ -360,6 +360,7 @@ class cata_tiles
         void draw_entity_with_overlays( const player &pl, const tripoint &p, lit_level ll, int &height_3d );
 
         bool draw_item_highlight( const tripoint &pos );
+        bool draw_zombie_revival_indicator( const tripoint &pos, const lit_level ll );
 
     public:
         // Animation layers
