@@ -1,0 +1,7 @@
+[
+  {
+    "type": "mod_tileset",
+    "compatibility": [ "MSX++DEAD_PEOPLE", "UNDEAD_PEOPLE" ],
+    "tiles-new": [ { "file": "Zombie_Revival_Indicator.png", "tiles": [ { "id": "zombie_revival_indicator", "fg": 0 } ] } ]
+  }
+]

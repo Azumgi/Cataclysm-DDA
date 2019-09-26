@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "ident": "DP_ZOMBIE_REVIVAL_INDICATOR",
+    "name": "[DP_MOD] Zombie Revival Indicator",
+    "authors": [ "Azumgi" ],
+    "description": "Adds zombie revival indicator.",
+    "category": "graphical",
+    "dependencies": [ "dda" ]
+  }
+]
